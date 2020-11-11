@@ -51,14 +51,41 @@ met912$Year <- 1991
 
 Add Date field (MO-DA-YEAR or similar format) based on Year and JDate. (Note that this depends on leap year or not.)
 
+```{r}
 
+```
 
 Change outliers to NA:
 	Ta, Tbe, Tbs, Tbw: <-20 OR >60
 	Sol:  <-5 OR > 140
 	
 ```{r}
+max(met912$Ta)
+min(met912$Ta)
+max(met912$Tbe)
+min(met912$Tbe)
+max(met912$Tbs)
+min(met912$Tbs)
+max(met912$Tbw)
+min(met912$Tbw)
 
+max(met912$Sol)
+min(met912$Sol)
+
+```
+	
+No need to write a loop for this right this second - none lie outside of those values. 
+
+Potential loop format: 
+
+```{r}
+for(i in 1:length(met912$CaseNum)){
+  if(met912[i, 5] < -20){
+    met912[i, 5] <- NA
+  } else if (met912[i,5] > 60){
+    met912[i, 5] <- NA
+  }
+}
 ```
 
 	
@@ -91,5 +118,28 @@ ggplot(aes(x = CaseNum), data = met912) +
 ```
 
 Make summaries by=JDate of Sol, Tbmean, Ta and Tdelta and plot if useful.
+
+(What exactly do you want me to summarize? Means, max, min?)
+
+```{r}
+Solsum <- met912 %>%
+  group_by(JDate) %>%
+    summarise(mean = mean(Sol), max = max(Sol), min = min(Sol))
+
+Tbmeansum <- met912 %>%
+  group_by(JDate) %>%
+    summarise(mean = mean(Tbmean), max = max(Tbmean), min = min(Tbmean))
+
+Tasum <- met912 %>%
+  group_by(JDate) %>%
+    summarise(mean = mean(Ta), max = max(Ta), min = min(Ta))
+
+Tdeltasum <- met912 %>%
+  group_by(JDate) %>%
+    summarise(mean = mean(Tdelta), max = max(Tdelta), min = min(Tdelta))
+```
+
+
+
 The goal is to develop daily metrics of weather [Sol and Ta] and body temperature [Tbmean and Tdelta] to associate with daily recapture data (e.g. see Corfu.1991nb2.NB_RECAPS_ALL.csv).
 
