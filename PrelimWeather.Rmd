@@ -1,0 +1,95 @@
+---
+title: "Preliminary Run-through"
+output: html_notebook
+---
+
+This notebook serves as a tester for a preliminary run-through of data cleaning for the weather data used in the OPUS grant project. I'll be following Joel's instructions on this script and getting an output that may be useful in future analyses. 
+
+MET files are weather (datalogger) data associated with each mark-recapture study at Corfu WA.
+Data fields in each .csv file:
+"    "  “ID” "Date"   "Time"    "Sol"  "Ta"   "Tbe" "Tbs" "Tbw" . 
+
+Necessary libraries:
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+For each file (start with Met.1991_2.csv file)
+Read in file
+
+```{r}
+met912 <- read.csv("~/Desktop/GitHub/OPUS/Data/Met.1991_2.csv")
+```
+
+Rename X1 (first field) to CaseNum
+
+```{r}
+met912 <- met912 %>%
+  rename(CaseNum = X)
+```
+
+Rename Date to JDate  [Julian day of year]
+
+```{r}
+met912 <- met912 %>%
+  rename(JDate = Date)
+```
+
+Delete ID field
+
+```{r}
+met912 <- subset(met912, select = -c(ID))
+```
+
+Add Year field (value = year, e.g. 1991)
+
+```{r}
+met912$Year <- 1991
+```
+
+Add Date field (MO-DA-YEAR or similar format) based on Year and JDate. (Note that this depends on leap year or not.)
+
+
+
+Change outliers to NA:
+	Ta, Tbe, Tbs, Tbw: <-20 OR >60
+	Sol:  <-5 OR > 140
+	
+```{r}
+
+```
+
+	
+Add Tbmean field:  Tbmean = mean(Tbe, Tbs, Tbw)  [mean model body temperature]
+
+```{r}
+met912$Tbmean <- NA
+
+for(i in 1:length(met912$CaseNum)){
+  vals <- c(met912[i, 6], met912[i, 7], met912[i, 8])
+  met912[i, 10] <- mean(vals)
+}
+```
+
+Add Tdelta field: Tdelta = Tbmean – Ta  [difference between mean body and air temperature]
+
+```{r}
+met912$Tdelta <- met912$Tbmean - met912$Ta
+```
+
+Make quick plot of Tbmean, Ta and Tdelta vs CaseNum (multiple lines on a single plot) to inspect data.
+
+```{r}
+ggplot(aes(x = CaseNum), data = met912) +
+  geom_line(aes(y = Tbmean), color = "#95D840") + 
+  geom_line(aes(y = Ta), color = "#3F87BC") + 
+  geom_line(aes(y = Tdelta), color = "#440D54")
+
+            
+```
+
+Make summaries by=JDate of Sol, Tbmean, Ta and Tdelta and plot if useful.
+The goal is to develop daily metrics of weather [Sol and Ta] and body temperature [Tbmean and Tdelta] to associate with daily recapture data (e.g. see Corfu.1991nb2.NB_RECAPS_ALL.csv).
+
