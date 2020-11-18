@@ -193,7 +193,7 @@ Taws <- merge(Tasum, wsd, by = "JDate")
 Plot differences in temps for max and min
 
 ```{r}
-ggplot(aes(x = max, y = wsmax), data = Taws) + 
+ggplot(aes(x = wsmax, y = max), data = Taws) + 
   geom_point() + 
   geom_abline(intercept = 0, slope = 1, linetype = "dashed") + 
   xlim(25,45) + 
