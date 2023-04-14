@@ -1,7 +1,15 @@
 # OPUS
 Code and datasets for Joel Kingsolver's OPUS grant project, started Fall 2020
 
-In this project, we inputted, cleaned, and analyzed existing datasets from the 1990s. This repo contains the cleaning scripts and final cleaned datafiles for each dataset. NOTE: this repo does not contain any analyses or intermediate versions -- just the final datafiles and completed cleaning scripts. The raw datafiles, as well as some intermediate scripts, can be found on Joel's Google Drive folder entitled "OPUS MRR studies". 
+In this project, we inputted, cleaned, and analyzed existing mark-recapture datasets from the 1990s. This repo contains the cleaning scripts and final cleaned datafiles for each dataset. NOTE: this repo does not contain any analyses or intermediate versions -- just the final datafiles and completed cleaning scripts. The raw datafiles, as well as some intermediate scripts, can be found on Joel's Google Drive folder entitled "OPUS MRR studies". 
+
+## Brief description of each study 
+
+- BlackYellow: adult butterflies had their wings artificially colored and then were released 
+- CutWing: adult butterflies had their wings cut and then were released
+- LongDayShortDay: larvae were reared under different light conditions prior to release as adults
+- NaturalVariation: background variation in butterfly traits and conditions (no cleaning script completed for this set) 
+- Weighted: adult butterflies had tiny weights attached to them and then were released
 
 ## General process for datasets 
 Most datasets consisted of two original files: one that contained initial capture data (treatment group, wing condition, mass, etc.), and one that contained subsequent recapture data (behavior when recaptured, time of day, etc.). For each experiment, we followed the same workflow: 
@@ -29,7 +37,7 @@ Due to the shared workflow, all of the final datafiles have the same structure: 
 
 ### Unique fields per study
 
-Black/Yellow studies 
+BlackYellow studies 
 
 - BEH: Behavior at time of recapture
 - TIME: Time of recapture
@@ -40,7 +48,7 @@ CutWing studies
 - BEH: Behavior at time of recapture
 - TIME: Time of recapture
 
-Photoperiod (Long day / short day) studies 
+LongDayShortDay studies 
 
 - FAM: Numeric identifier for mother/family of that individual 
 - AGE: Age at release (numeric from 0-2)
