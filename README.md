@@ -14,45 +14,45 @@ Due to the shared workflow, all of the final datafiles have the same structure: 
 
 ### Common fields and contents
 
-SPECIES: Species worked with during that study 
-SITE: Site where the individuals were collected
-ID: Unique numeric identifier of that individual 
-SEX: Sex of the individual
-TREAT: Treatment group of the individual (differs by study)
-FWL: Front wing length of the individual at initial capture
-REL_DATE: Date of initial release, in YYYY-MM-DD format
-COND_0: Condition at time of initial release
-RECAP_DATE: Date of (re)capture, in Julian date format
-NRECAP: Number of recapture for that individual and instance 
-NOTEBOOK: Original notebook identifier from which the data came 
+- SPECIES: Species worked with during that study 
+- SITE: Site where the individuals were collected
+- ID: Unique numeric identifier of that individual 
+- SEX: Sex of the individual
+- TREAT: Treatment group of the individual (differs by study)
+- FWL: Front wing length of the individual at initial capture
+- REL_DATE: Date of initial release, in YYYY-MM-DD format
+- COND_0: Condition at time of initial release
+- RECAP_DATE: Date of (re)capture, in Julian date format
+- NRECAP: Number of recapture for that individual and instance 
+- NOTEBOOK: Original notebook identifier from which the data came 
 
 
 ### Unique fields per study
 
 Black/Yellow studies 
 
-BEH: Behavior at time of recapture
-TIME: Time of recapture
+- BEH: Behavior at time of recapture
+- TIME: Time of recapture
 
 CutWing studies 
 
-BUT_WT: Weight of individual at initial capture 
-BEH: Behavior at time of recapture
-TIME: Time of recapture
+- BUT_WT: Weight of individual at initial capture 
+- BEH: Behavior at time of recapture
+- TIME: Time of recapture
 
 Photoperiod (Long day / short day) studies 
 
-FAM: Numeric identifier for mother/family of that individual 
-AGE: Age at release (numeric from 0-2)
-WEAR: Condition of individual at each recapture event
+- FAM: Numeric identifier for mother/family of that individual 
+- AGE: Age at release (numeric from 0-2)
+- WEAR: Condition of individual at each recapture event
 
 Weighted studies 
 
-BUT_WT: Weight of individual at initial capture 
-WTDBUT_WT: Weight of individual with weight attached before release
-BEH: Behavior at time of recapture
-TIME: Time of recapture
-WEAR: Condition of individual at each recapture event
+- BUT_WT: Weight of individual at initial capture 
+- WTDBUT_WT: Weight of individual with weight attached before release
+- BEH: Behavior at time of recapture
+- TIME: Time of recapture
+- WEAR: Condition of individual at each recapture event
 
 
 
