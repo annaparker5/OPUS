@@ -1,0 +1,76 @@
+# Kingsolver MRR data June 2023
+
+These datasets provide the original data for a series of mark-recapture studies, and associated research publications, with Pontia occidentalis butterflies near Corfu WA between 1989 and 1996.  Details of the study site, methodology, and associated publications for each study are described in the associated document file: Kingsolver Historical MRR datasets for Pontia occidentalis.doc . The dataset for each study is provided as a separate MS .xls file.  Below we describe the general process that was used to transcribe, organize and check these data; the common data fields included in every datafile; and the unique data fields included in each particular study and datafile. 
+
+## Brief description of each study 
+
+- BlackYellow: adult butterflies had their wings artificially colored and then were released 
+- CutWing: adult butterflies had their wings cut and then were released
+- LongDayShortDay: larvae were reared under different light conditions prior to release as adults
+- NaturalVariation: background variation in butterfly traits and conditions (no cleaning script completed for this set) 
+- Weighted: adult butterflies had tiny weights attached to them and then were released
+
+## General process for datasets 
+Most datasets consisted of two original files: one that contained initial capture data (treatment group, wing condition, mass, etc.), and one that contained subsequent recapture data (behavior when recaptured, time of day, etc.). For each experiment, we followed the same workflow: 
+
+- We scanned and transcribed the field notebooks as written into the two separate files
+- We checked for errors by checking for duplicate IDs, mistyped treatment group labels, etc. 
+- We concatenated these two datafiles into one long datafile by marking the initial capture as recapture # 0. By doing so, we could keep all of the affiliated data unique to each sample and be able to analyze the recaptures alongside these data. 
+
+Due to the shared workflow, all of the final datafiles have the same structure: a set of initial captures as the beginning rows of the datafile (marked as recapture #0), and then subsequent recaptures (with duplicated identifying data) following in later rows. Many of the column names are also the same across datafiles, while a few are unique to each. Below, we describe these fields and how they differ across datafiles. 
+
+### Common fields and contents
+
+- SPECIES: Species worked with during that study 
+- SITE: Site where the individuals were collected
+- ID: Unique numeric identifier of that individual 
+- SEX: Sex of the individual
+- TREAT: Treatment group of the individual (differs by study)
+- FWL: Front wing length of the individual at initial capture
+- REL_DATE: Date of initial release, in YYYY-MM-DD format
+- COND_0: Condition at time of initial release
+- RECAP_DATE: Date of (re)capture, in Julian date format
+- NRECAP: Number of recapture for that individual and instance 
+- NOTEBOOK: Original notebook identifier from which the data came 
+
+
+### Unique fields per study
+
+BlackYellow studies 
+
+- BEH: Behavior at time of recapture
+- TIME: Time of recapture
+
+CutWing studies 
+
+- BUT_WT: Weight of individual at initial capture 
+- BEH: Behavior at time of recapture
+- TIME: Time of recapture
+
+Natural Variation studies
+
+- CAPTIME: Time at initial capture 
+- BEH_0: Behavior of individual at initial capture 
+- MEL_GRP: Degree of ventral hindwing melanin (1, 2, 3)
+- FT4: Length of transverse band spot in cell M3 on dorsal forewing
+- FM2: Length of marginal band spot along vein M1 on dorsal forewing
+- DS: Gray level of medial discal cell on dorsal forewing
+- HB: Gray level of basal dorsal hindwing 
+- PV: Gray level of posterior ventral hindwing 
+
+LongDayShortDay studies 
+
+- FAM: Numeric identifier for mother/family of that individual 
+- AGE: Age at release (numeric from 0-2)
+- WEAR: Condition of individual at each recapture event
+
+Weighted studies 
+
+- BUT_WT: Weight of individual at initial capture 
+- WTDBUT_WT: Weight of individual with weight attached before release
+- BEH: Behavior at time of recapture
+- TIME: Time of recapture
+- WEAR: Condition of individual at each recapture event
+
+
+
